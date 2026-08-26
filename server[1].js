@@ -96,8 +96,8 @@ app.post(
     try {
       await openai.realtime.calls.accept(callId, {
         type: "realtime",
-        model: "gpt-realtime-mini",
-        instructions: BUHO_INSTRUCTIONS,
+        model: "gpt-realtime-2.1-mini",
+        instructions: BUHO_INTRUCTIONS,
         output_modalities: ["audio"],
         tracing: "auto",
       });
