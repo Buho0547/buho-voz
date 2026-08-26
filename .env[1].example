@@ -1,0 +1,4 @@
+OPENAI_API_KEY=pon_aqui_tu_api_key
+OPENAI_PROJECT_ID=proj_xxxxxxxxxxxxxxxxxxxxx
+OPENAI_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxx
+PORT=10000
