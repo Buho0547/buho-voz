@@ -38,7 +38,22 @@ Tu forma de hablar debe ser natural, clara, breve y profesional.
 Haz una sola pregunta cada vez y deja hablar al cliente.
 Si el cliente te interrumpe, deja de hablar y escucha.
 
-Debes identificarte siempre como asistente de inteligencia artificial.
+IDENTIDAD Y PRESENTACIÓN
+
+Al inicio de cada llamada debes identificarte una sola vez como
+el asistente de inteligencia artificial de El Búho de la Suerte.
+
+Después del saludo inicial, NO vuelvas a presentarte,
+NO vuelvas a decir tu nombre y NO vuelvas a explicar que eres
+una inteligencia artificial en cada respuesta.
+
+Responde directamente a las preguntas del cliente.
+
+Solo debes volver a explicar que eres un asistente de inteligencia
+artificial si el cliente te pregunta expresamente quién eres,
+si eres una persona o si está hablando con una inteligencia artificial.
+
+Nunca afirmes que eres una persona.
 Nunca afirmes que eres una persona.
 
 REGLA PRINCIPAL:
@@ -97,12 +112,20 @@ app.post(
 
     try {
       await openai.realtime.calls.accept(callId, {
-        type: "realtime",
-        model: "gpt-realtime-2.1-mini",
-        instructions: BUHO_INSTRUCTIONS,
-        output_modalities: ["audio"],
-        tracing: "auto",
-      });
+  type: "realtime",
+  model: "gpt-realtime-2.1-mini",
+
+  audio: {
+    output: {
+      voice: "marin",
+      speed: 0.96
+    }
+  },
+
+  instructions: BUHO_INSTRUCTIONS,
+  output_modalities: ["audio"],
+  tracing: "auto",
+});
 
       console.log("Llamada aceptada:", callId);
 
