@@ -1,6 +1,7 @@
 import express from "express";
 import OpenAI from "openai";
 import { OpenAIRealtimeWS } from "openai/realtime/ws";
+import { BUSINESS_KNOWLEDGE } from "./knowledge.js";
 
 const {
   OPENAI_API_KEY,
@@ -55,6 +56,7 @@ En esta primera versión de pruebas:
 Si no puedes resolver una consulta, indica que durante esta fase de pruebas la consulta deberá revisarla una persona de la administración.
 
 Sé conciso. No hagas discursos largos.
+${BUSINESS_KNOWLEDGE}
 `.trim();
 
 const WELCOME_MESSAGE =
