@@ -79,7 +79,7 @@ app.post(
     let event;
 
     try {
-      event = openai.webhooks.unwrap(req.body, req.headers);
+      event = await openai.webhooks.unwrap(req.body, req.headers);
     } catch (error) {
       console.error("Webhook rechazado: firma no válida.", error);
       return res.status(400).send("Invalid webhook signature");
