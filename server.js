@@ -162,6 +162,42 @@ app.post(
   },
 );
 
+app.post("/elevenlabs/init", express.json(), (req, res) => {
+  const now = new Date();
+
+  const madridTime = new Intl.DateTimeFormat("es-ES", {
+    timeZone: "Europe/Madrid",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(now);
+
+  const hour = Number(madridTime.split(":")[0]);
+
+  let saludo;
+
+  if (hour >= 6 && hour < 14) {
+    saludo = "Buenos días";
+  } else if (hour >= 14 && hour < 21) {
+    saludo = "Buenas tardes";
+  } else {
+    saludo = "Buenas noches";
+  }
+
+  console.log("ElevenLabs inicio:", {
+    caller: req.body?.caller_id,
+    called: req.body?.called_number,
+    saludo,
+  });
+
+  return res.status(200).json({
+    type: "conversation_initiation_client_data",
+    dynamic_variables: {
+      saludo: saludo,
+    },
+  });
+});
+
 app.listen(Number(PORT), "0.0.0.0", () => {
   console.log(`Búho escuchando en el puerto ${PORT}`);
 });
